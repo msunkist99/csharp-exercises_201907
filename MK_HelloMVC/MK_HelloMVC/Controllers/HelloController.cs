@@ -4,6 +4,8 @@ namespace MK_HelloMVC.Controllers
 {
     public class HelloController : Controller
     {
+        static int count = 0;
+
         //http://localhost:58231/hello?name=mary
         [HttpGet]
         public IActionResult Index(string name = "World")
@@ -46,8 +48,9 @@ namespace MK_HelloMVC.Controllers
             {
                 name = "World";
             }
+            count++;
 
-            return Content(string.Format("<h1> {0}</h1>", CreateMessage(name, language)), "text/html");
+            return Content(string.Format("<h1> {0}</h1>", CreateMessage(name, language, count)), "text/html");
         }
 
         [Route("Hello/{name}")]
@@ -61,30 +64,30 @@ namespace MK_HelloMVC.Controllers
             return Content("Goodbye");
         }
 
-        public static string CreateMessage (string name, string language)
+        public static string CreateMessage (string name, string language, int count)
         {
             switch (language)
             {
                 case "french":
-                    return "Bonjour " + name;
+                    return "Bonjour " + name + " - " + count;
 
                 case "spanish":
-                    return "Hola " + name;
+                    return "Hola " + name + " - " + count;
 
                 case "german":
-                    return "Guten tag " + name;
+                    return "Guten tag " + name + " - " + count;
 
                 case "italian":
-                    return "Caio " + name;
+                    return "Caio " + name + " - " + count;
 
                 case "hindi":
-                    return "Namaste  " + name;
+                    return "Namaste  " + name + " - " + count;
 
                 case "farsi":
-                    return "Salaam " + name;
+                    return "Salaam " + name + " - " + count;
 
                 default:
-                    return "Hello " + name;
+                    return "Hello " + name + " - " + count;
             }
         }
     }
