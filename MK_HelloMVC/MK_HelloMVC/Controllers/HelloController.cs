@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MK_HelloMVC.Controllers
 {
     public class HelloController : Controller
     {
-        static int count = 0;
+        //static int count = 0;
 
         //http://localhost:58231/hello?name=mary
         [HttpGet]
@@ -48,7 +49,18 @@ namespace MK_HelloMVC.Controllers
             {
                 name = "World";
             }
-            count++;
+
+            int count = 1;
+
+            if (Request.Cookies[name] == null)
+            {
+                Response.Cookies.Append(name, "1");
+            }
+            else
+            {
+                count = int.Parse(Request.Cookies[name]) + 1;
+                Response.Cookies.Append(name, count.ToString());
+            }
 
             return Content(string.Format("<h1> {0}</h1>", CreateMessage(name, language, count)), "text/html");
         }
