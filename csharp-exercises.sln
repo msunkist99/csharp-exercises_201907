@@ -28,13 +28,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MK_ListsSumOfEvenNumbers", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MK_ListStrings_FiveLetterWords", "MK_ListStrings_FiveLetterWords\MK_ListStrings_FiveLetterWords.csproj", "{919A0370-142F-4400-B68A-9131A92DD3FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MK_Arrays_CreateInitializeInSingleLineOfCode", "MK_Arrays_CreateInitializeInSingleLineOfCode\MK_Arrays_CreateInitializeInSingleLineOfCode.csproj", "{0736AC18-A0E8-455E-8E8D-642C3EF8FB03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MK_Arrays_CreateInitializeInSingleLineOfCode", "MK_Arrays_CreateInitializeInSingleLineOfCode\MK_Arrays_CreateInitializeInSingleLineOfCode.csproj", "{0736AC18-A0E8-455E-8E8D-642C3EF8FB03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MK_Dictionary_GradeBook", "MK_Dictionary_GradeBook\MK_Dictionary_GradeBook.csproj", "{82C46012-300C-4D15-921A-9179DD250EED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MK_Dictionary_GradeBook", "MK_Dictionary_GradeBook\MK_Dictionary_GradeBook.csproj", "{82C46012-300C-4D15-921A-9179DD250EED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MK_Dictionary_StringBuilder_GradeBook", "MK_Dictionary_StringBuilder_GradeBook\MK_Dictionary_StringBuilder_GradeBook.csproj", "{9103096F-2C16-48E0-9EAC-C0E1E8D77DAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MK_Dictionary_StringBuilder_GradeBook", "MK_Dictionary_StringBuilder_GradeBook\MK_Dictionary_StringBuilder_GradeBook.csproj", "{9103096F-2C16-48E0-9EAC-C0E1E8D77DAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MK_CountingCharacters", "MK_CountingCharacters\MK_CountingCharacters.csproj", "{44FC6FF8-44FE-46A9-B57A-562635A1CB70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MK_CountingCharacters", "MK_CountingCharacters\MK_CountingCharacters.csproj", "{44FC6FF8-44FE-46A9-B57A-562635A1CB70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MK_CheeseMVC", "MK_CheeseMVC\MK_CheeseMVC.csproj", "{33F94D92-F369-4364-88FD-3A06868C7818}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -110,6 +112,10 @@ Global
 		{44FC6FF8-44FE-46A9-B57A-562635A1CB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44FC6FF8-44FE-46A9-B57A-562635A1CB70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44FC6FF8-44FE-46A9-B57A-562635A1CB70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33F94D92-F369-4364-88FD-3A06868C7818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33F94D92-F369-4364-88FD-3A06868C7818}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33F94D92-F369-4364-88FD-3A06868C7818}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33F94D92-F369-4364-88FD-3A06868C7818}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
