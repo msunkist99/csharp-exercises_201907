@@ -8,14 +8,25 @@ namespace MK_CheeseMVC.Controllers
 {
     public class CheeseController : Controller
     {
+        public static List<string> Cheeses = new List<string>();
+
         public IActionResult Index()
+        {
+            ViewBag.cheeses = Cheeses;
+            return View();
+        }
+
+        public IActionResult Add()
         {
             return View();
         }
 
-        public IActionResult Index2()
+        [HttpPost]
+        [Route("Cheese/Add")]
+        public IActionResult NewCheese(string name)
         {
-            return View("Index");
+            Cheeses.Add(name);
+            return Redirect("/Cheese");
         }
     }
 }
