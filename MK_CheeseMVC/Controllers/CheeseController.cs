@@ -31,13 +31,20 @@ namespace MK_CheeseMVC.Controllers
         {
             if (string.IsNullOrEmpty(name))
             {
-                Error = "Please enter cheesename";
+                Error = "Please enter cheese name";
                 return Redirect("/Cheese/Add");
             }
-            else
+
+            foreach (char character in name)
             {
-                Error = null;
+                if (Char.IsNumber(character))
+                {
+                    Error = "Please enter valid cheese name without numbers";
+                    return Redirect("/Cheese/Add");
+                }
             }
+
+            Error = null;
 
             //Cheeses.Add(name);
             Cheeses.Add(name, description);
