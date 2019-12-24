@@ -8,7 +8,8 @@ namespace MK_CheeseMVC.Controllers
 {
     public class CheeseController : Controller
     {
-        public static List<string> Cheeses = new List<string>();
+        //public static List<string> Cheeses = new List<string>();
+        public static Dictionary<string, string> Cheeses = new Dictionary<string,string>();
 
         public IActionResult Index()
         {
@@ -23,9 +24,10 @@ namespace MK_CheeseMVC.Controllers
 
         [HttpPost]
         [Route("Cheese/Add")]
-        public IActionResult NewCheese(string name)
+        public IActionResult NewCheese(string name, string description)
         {
-            Cheeses.Add(name);
+            //Cheeses.Add(name);
+            Cheeses.Add(name, description);
             return Redirect("/Cheese");
         }
     }
