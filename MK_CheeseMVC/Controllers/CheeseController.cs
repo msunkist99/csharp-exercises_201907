@@ -10,15 +10,18 @@ namespace MK_CheeseMVC.Controllers
     {
         //public static List<string> Cheeses = new List<string>();
         public static Dictionary<string, string> Cheeses = new Dictionary<string,string>();
+        public static string Error = null;
 
         public IActionResult Index()
         {
             ViewBag.cheeses = Cheeses;
+            //ViewBag.error = null;
             return View();
         }
 
         public IActionResult Add()
         {
+            ViewBag.error = Error;
             return View();
         }
 
@@ -26,6 +29,16 @@ namespace MK_CheeseMVC.Controllers
         [Route("Cheese/Add")]
         public IActionResult NewCheese(string name, string description)
         {
+            if (string.IsNullOrEmpty(name))
+            {
+                Error = "Please enter cheesename";
+                return Redirect("/Cheese/Add");
+            }
+            else
+            {
+                Error = null;
+            }
+
             //Cheeses.Add(name);
             Cheeses.Add(name, description);
             return Redirect("/Cheese");

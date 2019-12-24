@@ -4,6 +4,8 @@
 }
 
     <form method="post">
+
+
         <label for="name">Cheese Name</label>
         <input type="text" name="name" />
 
@@ -11,5 +13,10 @@
         <input type="text" name="description" />
 
         <input type="submit" value="Add Cheese" />
+
+        @if (ViewBag.error != null)
+        {
+            <p><label>@ViewBag.error</label></p>
+        }
     </form>
 
