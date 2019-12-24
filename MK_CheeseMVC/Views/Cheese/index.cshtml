@@ -6,16 +6,18 @@
 <h1>My Cheese</h1>
 
 <p><a asp-controller="Cheese" asp-action="Add">Add Cheese</a></p>
+<p><a asp-controller="Cheese" asp-action="DeleteCheckbox">Delete Cheese Checkbox</a></p>
+<p><a asp-controller="Cheese" asp-action="DeleteDropdownList">Delete Cheese Dropdown List</a></p>
 
 @if (ViewBag.Cheeses.Count == 0)
 {
-    <p>No cheeses yet!</p>
+	<p>No cheeses yet!</p>
 }
 else
-	{
-		<ul>
-			@foreach (KeyValuePair<string, string> cheese in ViewBag.Cheeses)
-			{
-				<li>@(cheese.Key + " " + cheese.Value)</li>
-			}
-</ul>	}
+{
+	<ul>
+		@foreach (KeyValuePair<string, string> cheese in ViewBag.Cheeses)
+		{
+			<li>@("Cheese Name - " + cheese.Key + " Cheese Description - " + cheese.Value)</li>
+		}
+	</ul>			}

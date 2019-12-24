@@ -1,0 +1,15 @@
+﻿
+@{
+
+}
+
+    <form method="post">
+        @foreach (KeyValuePair<string, string> cheese in ViewBag.Cheeses)
+        {
+            <input type="checkbox" name="names" value="@cheese.Key" />@("Cheese Name - " + cheese.Key + " Cheese Description - " + cheese.Value) <br />
+        }
+
+        <input type="submit" value="Delete Cheese" />
+    </form>
+
+

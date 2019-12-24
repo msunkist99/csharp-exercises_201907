@@ -30,5 +30,31 @@ namespace MK_CheeseMVC.Controllers
             Cheeses.Add(name, description);
             return Redirect("/Cheese");
         }
+
+        public IActionResult DeleteCheckbox()
+        {
+            ViewBag.cheeses = Cheeses;
+            return View();
+        }
+
+        public IActionResult DeleteDropdownList()
+        {
+            ViewBag.cheeses = Cheeses;
+            return View();
+        }
+
+        [HttpPost]
+        [Route("Cheese/DeleteDropdownList")]
+        [Route("Cheese/DeleteCheckbox")]
+        public IActionResult Delete(string[] names) {
+
+            foreach (string name in names)
+            {
+                Cheeses.Remove(name);
+            }
+
+            return Redirect("/Cheese");
+        }
+
     }
 }
