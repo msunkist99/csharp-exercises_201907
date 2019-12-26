@@ -1,0 +1,17 @@
+public field/property
+A public field or property is one that accessible to everything and can be updated by everything
+
+private field
+accessible only from within the class
+
+static field/property
+A static field or property is one that is declared with the static keyword. 
+We have encountered the static keyword used with both fields and methods, but since this discussion is focused on data, let's only discuss static fields and properties for now.
+which belongs to the class rather than to the objects of the class. 
+
+readonly field/property
+A readonly field is one that can not be changed once it is initialized (assigned a value). 
+This means slightly different things for primitive and class types. We create readonly fields by declaring them with the readonly keyword.
+
+Constants
+C# allows us to create constants - named values that may not be changed - using the keyword const.
