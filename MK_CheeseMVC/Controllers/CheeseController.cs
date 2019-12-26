@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MK_CheeseMVC.Models;
 
 namespace MK_CheeseMVC.Controllers
 {
     public class CheeseController : Controller
     {
         //public static List<string> Cheeses = new List<string>();
-        public static Dictionary<string, string> Cheeses = new Dictionary<string,string>();
+        //public static Dictionary<string, string> Cheeses = new Dictionary<string,string>();
+        public static Dictionary<string, Cheese> Cheeses = new Dictionary<string, Cheese>();
+
         public static string Error = null;
 
         public IActionResult Index()
@@ -47,7 +50,12 @@ namespace MK_CheeseMVC.Controllers
             Error = null;
 
             //Cheeses.Add(name);
-            Cheeses.Add(name, description);
+            Cheese cheese = new Cheese();
+            cheese.Name = name;
+            cheese.Description = description;
+            //Cheeses.Add(name, description);
+            Cheeses.Add(name, cheese);
+
             return Redirect("/Cheese");
         }
 

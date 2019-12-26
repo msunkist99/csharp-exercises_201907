@@ -16,8 +16,8 @@
 else
 {
 	<ul>
-		@foreach (KeyValuePair<string, string> cheese in ViewBag.Cheeses)
+		@foreach (KeyValuePair<string, Cheese> cheese in ViewBag.Cheeses)
 		{
-			<li>@("Cheese Name - " + cheese.Key + " Cheese Description - " + cheese.Value)</li>
+			<li>@("Cheese Name - " + cheese.Value.Name + " Cheese Description - " + cheese.Value.Description)</li>
 		}
 	</ul>			}

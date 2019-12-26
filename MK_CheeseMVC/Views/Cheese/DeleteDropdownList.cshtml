@@ -3,9 +3,9 @@
 }
     <form method="post">    
         <select class="form-control" id="name" name="names">
-            @foreach (KeyValuePair<string, string> cheese in ViewBag.Cheeses)
+            @foreach (KeyValuePair<string, Cheese> cheese in ViewBag.Cheeses)
             {
-                <option value="@cheese.Key">@("Cheese Name - " + cheese.Key + " Cheese Description - " + cheese.Value) </option>
+                <option value="@cheese.Value.Name">@("Cheese Name - " + cheese.Value.Name + " Cheese Description - " + cheese.Value.Description) </option>
             }
         </select>
         <input type="submit" value="Delete Cheese" />
