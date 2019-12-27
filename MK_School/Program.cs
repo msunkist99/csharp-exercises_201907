@@ -73,14 +73,14 @@ namespace MK_School
         {
             private Dictionary<int, Student> students = new Dictionary<int, Student>();
             public string Name { get; set; }
-            int CreditHours { get;set }
+            int CreditHours { get; set; }
 
             public Dictionary<int, Student> Students
             {
                 get { return students; }
 
                 // on the set you would probably do some validation
-                set { students = value}
+                set { students = value; }
             }
 
         }
