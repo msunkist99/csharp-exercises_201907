@@ -10,7 +10,7 @@ namespace MK_Quiz_Class7
         public string CorrectAnswer { get; set; }
 
         public MultipleChoiceQuestion(List<string> answersText,
-                                      string correctAnswers,
+                                      string correctAnswer,
                                       string questionText,
                                       int skillLevel,
                                       string type,
@@ -18,7 +18,7 @@ namespace MK_Quiz_Class7
                                             base(questionText, skillLevel, type, points)
         {
             AnswersText = answersText;
-            CorrectAnswer = correctAnswers;
+            CorrectAnswer = correctAnswer;
         }
 
         public override String ToString()
@@ -27,12 +27,12 @@ namespace MK_Quiz_Class7
 
             foreach (string answerText in AnswersText)
             {
-                answerTextFormatted = answerText + "\n";
+                answerTextFormatted += answerText + "\n";
             }
 
-            return ($"Skill Level {SkillLevel} \n") +
+            return ($"\nSkill Level {SkillLevel} \n") +
                    ($"Worth {Points} points \n") +
-                   ($"{QuestionText} \n \n") +
+                   ($"{QuestionText} \n") +
                    ($"{answerTextFormatted}") + 
                    ($"Select one answer");
         }

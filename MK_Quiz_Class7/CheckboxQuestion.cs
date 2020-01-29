@@ -30,12 +30,12 @@ namespace MK_Quiz_Class7
 
             foreach (string answerText in AnswersText)
             {
-                answerTextFormatted = answerText + "\n";
+                answerTextFormatted += answerText + "\n";
             }
 
-            return ($"Skill Level {SkillLevel} \n") +
+            return ($"\nSkill Level {SkillLevel} \n") +
                    ($"Worth {Points} points \n") +
-                   ($"{QuestionText} \n \n") +
+                   ($"{QuestionText} \n") +
                    ($"{answerTextFormatted}") +
                    ($"Select one or more answers");
         }

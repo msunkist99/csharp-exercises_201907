@@ -6,12 +6,12 @@ namespace MK_Quiz_Class7
 {
     public class TrueFalseQuestion : Question
     {
-        public List<string> AnswersText { get; set; }
-        public bool CorrectAnswer { get; set; }
+        public string Answer { get; set; }
+        public string CorrectAnswer { get; set; }
         public string CorrectAnswerText { get; set; }
 
-        public TrueFalseQuestion(List<string> answersText, 
-                                 bool correctAnswer, 
+        public TrueFalseQuestion(string answer, 
+                                 string correctAnswer, 
                                  string correctAnswerText, 
                                  string questionText, 
                                  int skillLevel, 
@@ -19,20 +19,20 @@ namespace MK_Quiz_Class7
                                  int points) : 
                                     base(questionText, skillLevel, type, points)
         {
-            AnswersText = answersText;
+            Answer = answer;
             CorrectAnswer = correctAnswer;
             CorrectAnswerText = correctAnswerText;
         }
 
         public override String ToString()
         {
-            return ($"Skill Level {SkillLevel} \n") +
+            return ($"\nSkill Level {SkillLevel} \n") +
                    ($"Worth {Points} points \n") +
-                   ($"{QuestionText} \n \n") +
+                   ($"{QuestionText} \n") +
                    ($"Select true or false");
         }
 
-        public int CheckAnswer(bool answer)
+        public int CheckAnswer(string answer)
         {
             if (answer == CorrectAnswer)
             {
