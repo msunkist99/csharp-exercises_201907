@@ -28,7 +28,6 @@ namespace TechJobsConsole
             LoadData();
 
             List<string> values = new List<string>();
-
             foreach (Dictionary<string, string> job in AllJobs)
             {
                 string aValue = job[column];

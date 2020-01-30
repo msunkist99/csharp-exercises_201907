@@ -38,8 +38,8 @@ namespace MK_HelloMVC.Controllers
             //return Redirect("Hello/Goodbye");
         }
 
-        [Route("/Hello")]
-        [HttpPost]
+        //[Route("/Hello")]
+        [HttpPost, Route("/Hello")]
         public IActionResult Display(string name, string language)
         {
 

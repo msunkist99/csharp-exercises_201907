@@ -8,7 +8,17 @@ namespace MK_Quiz_Class7
         static void Main(string[] args)
         {
             Quiz quiz = BuildQuizQuestions();
-            PrintQuizQuestions(quiz);
+            //DisplayQuizQuestions(quiz);
+
+            foreach (Question question in quiz.Questions)
+            {
+                DisplayQuestion(question);
+                List<string> userAnswers = GetUserAnswer(question);
+                quiz.ThisQuizScore += ScoreUserAnswer(question, userAnswers);
+            }
+
+            Console.WriteLine($"Perfect quiz score - {quiz.QuizPerfectScore}");
+            Console.WriteLine($"This quiz score - {quiz.ThisQuizScore}");
 
             Console.ReadLine();
         }
@@ -46,8 +56,8 @@ namespace MK_Quiz_Class7
 
             // question2
             Question question2 = new TrueFalseQuestion("true/false", 
-                                                       "true", 
-                                                       "true", 
+                                                       "TRUE", 
+                                                       "True", 
                                                        "Is St Louis the greatest baseball town?", 
                                                        2, 
                                                        "truefalse", 
@@ -77,12 +87,98 @@ namespace MK_Quiz_Class7
             return quiz;
         }
 
-        static void PrintQuizQuestions(Quiz quiz)
+        static void DisplayQuizQuestions(Quiz quiz)
         {
             foreach (Question question in quiz.Questions)
             {
                 Console.WriteLine(question.ToString());
             }
+        }
+
+        static void DisplayQuestion(Question question)
+        {
+            switch (question.Type)
+            {
+                case "checkbox":
+                    CheckboxQuestion checkboxQuestion = (CheckboxQuestion)question;
+                    Console.WriteLine(checkboxQuestion.ToString());
+                    break;
+
+                case "truefalse":
+                    TrueFalseQuestion trueFalseQuestion = (TrueFalseQuestion)question;
+                    Console.WriteLine(trueFalseQuestion.ToString());
+                    break;
+
+                default:
+                    MultipleChoiceQuestion multipleChoiceQuestion = (MultipleChoiceQuestion)question;
+                    Console.WriteLine(multipleChoiceQuestion.ToString());
+                    break;
+            }
+        }
+
+        static List<string> GetUserAnswer(Question question)
+        {
+            List<string> answers = new List<string>();
+
+            switch (question.Type)
+            {
+                case "checkbox":
+                    CheckboxQuestion checkboxQuestion = (CheckboxQuestion)question;
+                    bool exit = false;
+                    int i = 0;
+                    while (exit != true)
+                    {
+                        string input = Console.ReadLine();
+                        if (input.ToUpper() == "EXIT")
+                        {
+                            exit = true;
+                        }
+                        else
+                        {
+                            answers.Add(input.ToUpper());
+                        }
+
+                    }
+                    break;
+
+                case "truefalse":
+                    TrueFalseQuestion trueFalseQuestion = (TrueFalseQuestion)question;
+                    answers.Add(Console.ReadLine().ToUpper());
+                    break;
+
+                default:
+                    MultipleChoiceQuestion multipleChoiceQuestion = (MultipleChoiceQuestion)question;
+                    answers.Add(Console.ReadLine().ToUpper()); 
+                    break;
+            }
+
+            return answers;
+        }
+
+        static int ScoreUserAnswer(Question question, List<string> answers)
+        {
+            int userQuestionScore = 0;
+
+            switch (question.Type)
+            {
+                case "checkbox":
+                    CheckboxQuestion checkboxQuestion = (CheckboxQuestion)question;
+                    userQuestionScore = checkboxQuestion.CheckAnswer(answers);
+                    break;
+
+                case "truefalse":
+                    TrueFalseQuestion trueFalseQuestion = (TrueFalseQuestion)question;
+                    userQuestionScore = trueFalseQuestion.CheckAnswer(answers[0]);
+                    break;
+
+                default:
+                    MultipleChoiceQuestion multipleChoiceQuestion = (MultipleChoiceQuestion)question;
+                    userQuestionScore = multipleChoiceQuestion.CheckAnswer(answers[0]);
+                    break;
+            }
+
+            Console.WriteLine($"User score - {userQuestionScore}");
+            return userQuestionScore;
         }
     }
 }
