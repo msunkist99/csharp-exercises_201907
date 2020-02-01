@@ -49,9 +49,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MK_RestaurantMenu", "MK_Res
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MK_School_Class6", "MK_School_Class6\MK_School_Class6.csproj", "{6AD613FF-319C-40BF-B787-843099C2C060}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MK_Shape_Class7_Inheritance", "MK_Shape_Class7_Inheritance\MK_Shape_Class7_Inheritance.csproj", "{9D1BE377-854F-412A-B8EE-848258FE5C87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MK_Shape_Class7_Inheritance", "MK_Shape_Class7_Inheritance\MK_Shape_Class7_Inheritance.csproj", "{9D1BE377-854F-412A-B8EE-848258FE5C87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MK_Quiz_Class7", "MK_Quiz_Class7\MK_Quiz_Class7.csproj", "{CBBA8353-3FBD-4BEA-BCCA-031BC9638814}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MK_Quiz_Class7", "MK_Quiz_Class7\MK_Quiz_Class7.csproj", "{CBBA8353-3FBD-4BEA-BCCA-031BC9638814}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MK_Quiz_Class7_part2", "MK_Quiz_Class7_part2\MK_Quiz_Class7_part2.csproj", "{F5DCCAB5-B8EE-4D7F-BD5C-40934B8632C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -151,6 +153,10 @@ Global
 		{CBBA8353-3FBD-4BEA-BCCA-031BC9638814}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBBA8353-3FBD-4BEA-BCCA-031BC9638814}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBBA8353-3FBD-4BEA-BCCA-031BC9638814}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5DCCAB5-B8EE-4D7F-BD5C-40934B8632C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5DCCAB5-B8EE-4D7F-BD5C-40934B8632C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5DCCAB5-B8EE-4D7F-BD5C-40934B8632C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5DCCAB5-B8EE-4D7F-BD5C-40934B8632C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
