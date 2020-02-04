@@ -1,0 +1,19 @@
+﻿<h1>Edit Cheese @ViewBag.cheese.Name </h1>
+
+<form method="post">
+
+    <input type="hidden" value="@ViewBag.cheese.CheeseId" name="id" />
+
+    <label for="name">Cheese Name</label>
+    <input type="text" name="name" value="@ViewBag.cheese.Name" />
+
+    <label for="description">Cheese Description</label>
+    <input type="text" name="description" value="@ViewBag.cheese.Description" />
+
+    <input type="submit" value="Update Cheese" />
+
+    @if (ViewBag.error != null)
+    {
+        <p><label>@ViewBag.error</label></p>
+    }
+</form>

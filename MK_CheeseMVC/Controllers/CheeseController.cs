@@ -16,6 +16,7 @@ namespace MK_CheeseMVC.Controllers
 
         public static string Error = null;
 
+        [HttpGet]
         public IActionResult Index()
         {
             ViewBag.cheeses = CheeseData.GetAll();
@@ -23,8 +24,10 @@ namespace MK_CheeseMVC.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Add()
         {
+            ViewBag.title = "Add Cheese";
             ViewBag.error = Error;
             return View();
         }
@@ -63,6 +66,7 @@ namespace MK_CheeseMVC.Controllers
             return Redirect("/Cheese");
         }
 
+        [HttpGet]
         public IActionResult DeleteCheckbox()
         {
             ViewBag.title = "Remove Cheeses with Checkboxes";
@@ -70,6 +74,7 @@ namespace MK_CheeseMVC.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult DeleteDropdownList()
         {
             ViewBag.title = "Remove Cheeses with Dropdown List";
@@ -90,5 +95,21 @@ namespace MK_CheeseMVC.Controllers
             return Redirect("/Cheese");
         }
 
+        [HttpGet]
+        public IActionResult Edit(int cheeseId)
+        {
+            ViewBag.title = "Edit Cheeses";
+            ViewBag.cheese = CheeseData.GetById(cheeseId);
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Cheese cheese)
+        {
+            CheeseData.Remove(cheese.CheeseId);
+            CheeseData.Add(cheese);
+
+            return Redirect("/Cheese");
+        }
     }
 }
