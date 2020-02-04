@@ -2,14 +2,18 @@
 @{
 
 }
+    <h1>@ViewBag.title</h1>
+
 
     <form method="post">
-        @foreach (KeyValuePair<string, Cheese> cheese in ViewBag.Cheeses)
+        @foreach (var cheese in ViewBag.Cheeses)
         {
-            <input type="checkbox" name="names" value="@cheese.Value.Name" />@("Cheese Name - " + cheese.Value.Name + " Cheese Description - " + cheese.Value.Description) <br />
+            <input type="checkbox" name="cheeseIds" id="@cheese.CheeseId" value="@cheese.CheeseId" />
+            <label for="@cheese.CheeseId">@("Cheese Name - " + cheese.Name + " Cheese Description - " + cheese.Description)</label> 
+            <br />
         }
 
-        <input type="submit" value="Delete Cheese" />
+        <input type="submit" value="Remove Selected Cheese(s)" />
     </form>
 
 

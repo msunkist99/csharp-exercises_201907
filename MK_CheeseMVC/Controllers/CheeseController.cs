@@ -9,15 +9,16 @@ namespace MK_CheeseMVC.Controllers
 {
     public class CheeseController : Controller
     {
-        //public static List<string> Cheeses = new List<string>();
-        //public static Dictionary<string, string> Cheeses = new Dictionary<string,string>();
-        public static Dictionary<string, Cheese> Cheeses = new Dictionary<string, Cheese>();
+        //static List<string> Cheeses = new List<string>();
+        //static Dictionary<string, string> Cheeses = new Dictionary<string,string>();
+        //static Dictionary<string, Cheese> Cheeses = new Dictionary<string, Cheese>();
+
 
         public static string Error = null;
 
         public IActionResult Index()
         {
-            ViewBag.cheeses = Cheeses;
+            ViewBag.cheeses = CheeseData.GetAll();
             //ViewBag.error = null;
             return View();
         }
@@ -30,15 +31,16 @@ namespace MK_CheeseMVC.Controllers
 
         [HttpPost]
         [Route("Cheese/Add")]
-        public IActionResult NewCheese(string name, string description)
+        //public IActionResult NewCheese(string name, string description)
+        public IActionResult NewCheese(Cheese cheese)
         {
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(cheese.Name))
             {
                 Error = "Please enter cheese name";
                 return Redirect("/Cheese/Add");
             }
 
-            foreach (char character in name)
+            foreach (char character in cheese.Name)
             {
                 if (Char.IsNumber(character))
                 {
@@ -49,36 +51,40 @@ namespace MK_CheeseMVC.Controllers
 
             Error = null;
 
-            //Cheeses.Add(name);
-            Cheese cheese = new Cheese();
-            cheese.Name = name;
-            cheese.Description = description;
-            //Cheeses.Add(name, description);
-            Cheeses.Add(name, cheese);
+            /*Cheese cheese = new Cheese
+            {
+                Name = name,
+                Description = description
+            };
+            */
+                
+            CheeseData.Add(cheese);
 
             return Redirect("/Cheese");
         }
 
         public IActionResult DeleteCheckbox()
         {
-            ViewBag.cheeses = Cheeses;
+            ViewBag.title = "Remove Cheeses with Checkboxes";
+            ViewBag.cheeses = CheeseData.GetAll();
             return View();
         }
 
         public IActionResult DeleteDropdownList()
         {
-            ViewBag.cheeses = Cheeses;
+            ViewBag.title = "Remove Cheeses with Dropdown List";
+            ViewBag.cheeses = CheeseData.GetAll();
             return View();
         }
 
         [HttpPost]
         [Route("Cheese/DeleteDropdownList")]
         [Route("Cheese/DeleteCheckbox")]
-        public IActionResult Delete(string[] names) {
+        public IActionResult Delete(int[] cheeseIds) {
 
-            foreach (string name in names)
+            foreach (int cheeseId in cheeseIds)
             {
-                Cheeses.Remove(name);
+                CheeseData.Remove(cheeseId);
             }
 
             return Redirect("/Cheese");

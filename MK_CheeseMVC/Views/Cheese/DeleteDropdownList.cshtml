@@ -1,12 +1,15 @@
 ﻿
 @{
 }
+
+    <h1>@ViewBag.title</h1>
+
     <form method="post">    
-        <select class="form-control" id="name" name="names">
-            @foreach (KeyValuePair<string, Cheese> cheese in ViewBag.Cheeses)
+        <select class="form-control" name="cheeseIds">
+            @foreach (var cheese in ViewBag.Cheeses)
             {
-                <option value="@cheese.Value.Name">@("Cheese Name - " + cheese.Value.Name + " Cheese Description - " + cheese.Value.Description) </option>
+                <option id="@cheese.CheeseId" value="@cheese.CheeseId">@("Cheese Name - " + cheese.Name + " Cheese Description - " + cheese.Description)</option>
             }
         </select>
-        <input type="submit" value="Delete Cheese" />
+        <input type="submit" value="Remove Selected Cheese(s)"  />
 </form>
