@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MK_CheeseMVC.Models;
+using MK_CheeseMVC.ViewModels;
 
 namespace MK_CheeseMVC.Controllers
 {
@@ -14,30 +15,35 @@ namespace MK_CheeseMVC.Controllers
         //static Dictionary<string, Cheese> Cheeses = new Dictionary<string, Cheese>();
 
 
-        public static string Error = null;
+        //public static string Error = null;
 
         [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.cheeses = CheeseData.GetAll();
+            List<Cheese> cheeses = CheeseData.GetAll();
+            //ViewBag.cheeses = CheeseData.GetAll();
             //ViewBag.error = null;
-            return View();
+            return View(cheeses);
         }
 
         [HttpGet]
         public IActionResult Add()
         {
-            ViewBag.title = "Add Cheese";
-            ViewBag.error = Error;
-            return View();
+            //ViewBag.title = "Add Cheese";
+            //ViewBag.error = Error;
+
+            AddCheeseViewModel addCheeseViewModel = new AddCheeseViewModel();
+
+            return View(addCheeseViewModel);
         }
 
         [HttpPost]
-        [Route("Cheese/Add")]
-        //public IActionResult NewCheese(string name, string description)
-        public IActionResult NewCheese(Cheese cheese)
+        //public IActionResult Add(string name, string description)
+        //public IActionResult NewCheese(Cheese cheese)
+        public IActionResult Add(AddCheeseViewModel addCheeseViewModel)
         {
-            if (string.IsNullOrEmpty(cheese.Name))
+            /*
+             * if (string.IsNullOrEmpty(cheese.Name))
             {
                 Error = "Please enter cheese name";
                 return Redirect("/Cheese/Add");
@@ -60,10 +66,21 @@ namespace MK_CheeseMVC.Controllers
                 Description = description
             };
             */
-                
-            CheeseData.Add(cheese);
 
-            return Redirect("/Cheese");
+            if (ModelState.IsValid)
+            {
+                Cheese cheese = new Cheese()
+                {
+                    Name = addCheeseViewModel.Name,
+                    Description = addCheeseViewModel.Description
+                };
+
+                CheeseData.Add(cheese);
+
+                return Redirect("/Cheese");
+            }
+
+            return View(addCheeseViewModel);
         }
 
         [HttpGet]
