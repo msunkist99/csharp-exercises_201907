@@ -18,6 +18,7 @@ else
 			<th></th>
 			<th>Name</th>
 			<th>Description</th>
+			<th>Cheese Type</th>
 		</tr>
 		
 		@foreach (var cheese in Model)
@@ -28,6 +29,7 @@ else
 				</td>
 				<td>@cheese.Name</td>
 				<td>@cheese.Description</td>
+				<td>@cheese.Type</td>
 			</tr>
 		}
 	</table>

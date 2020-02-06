@@ -72,7 +72,8 @@ namespace MK_CheeseMVC.Controllers
                 Cheese cheese = new Cheese()
                 {
                     Name = addCheeseViewModel.Name,
-                    Description = addCheeseViewModel.Description
+                    Description = addCheeseViewModel.Description,
+                    Type = addCheeseViewModel.Type
                 };
 
                 CheeseData.Add(cheese);
