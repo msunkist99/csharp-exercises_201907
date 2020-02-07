@@ -14,9 +14,6 @@ namespace MK_CheeseMVC.Controllers
         //static Dictionary<string, string> Cheeses = new Dictionary<string,string>();
         //static Dictionary<string, Cheese> Cheeses = new Dictionary<string, Cheese>();
 
-
-        //public static string Error = null;
-
         [HttpGet]
         public IActionResult Index()
         {
@@ -42,38 +39,14 @@ namespace MK_CheeseMVC.Controllers
         //public IActionResult NewCheese(Cheese cheese)
         public IActionResult Add(AddCheeseViewModel addCheeseViewModel)
         {
-            /*
-             * if (string.IsNullOrEmpty(cheese.Name))
-            {
-                Error = "Please enter cheese name";
-                return Redirect("/Cheese/Add");
-            }
-
-            foreach (char character in cheese.Name)
-            {
-                if (Char.IsNumber(character))
-                {
-                    Error = "Please enter valid cheese name without numbers";
-                    return Redirect("/Cheese/Add");
-                }
-            }
-
-            Error = null;
-
-            /*Cheese cheese = new Cheese
-            {
-                Name = name,
-                Description = description
-            };
-            */
-
             if (ModelState.IsValid)
             {
                 Cheese cheese = new Cheese()
                 {
                     Name = addCheeseViewModel.Name,
                     Description = addCheeseViewModel.Description,
-                    Type = addCheeseViewModel.Type
+                    Type = addCheeseViewModel.Type,
+                    Rating = addCheeseViewModel.Rating
                 };
 
                 CheeseData.Add(cheese);
@@ -117,17 +90,30 @@ namespace MK_CheeseMVC.Controllers
         public IActionResult Edit(int cheeseId)
         {
             ViewBag.title = "Edit Cheeses";
-            ViewBag.cheese = CheeseData.GetById(cheeseId);
-            return View();
+            //ViewBag.cheese = CheeseData.GetById(cheeseId);
+
+            Cheese cheese = CheeseData.GetById(cheeseId);
+
+            EditCheeseViewModel editCheeseViewModel = new EditCheeseViewModel();
+
+            return View(editCheeseViewModel.CreateCheeseViewModel(cheese));
         }
 
         [HttpPost]
-        public IActionResult Edit(Cheese cheese)
+        public IActionResult Edit(EditCheeseViewModel editCheeseViewModel)
         {
-            CheeseData.Remove(cheese.CheeseId);
-            CheeseData.Add(cheese);
+            if (ModelState.IsValid) 
+            {
+                CheeseData.Remove(editCheeseViewModel.CheeseId);
 
-            return Redirect("/Cheese");
+                Cheese cheese = editCheeseViewModel.CreateCheese();
+
+                CheeseData.Add(cheese);
+
+                return Redirect("/Cheese");
+            }
+
+            return View(editCheeseViewModel);
         }
     }
 }
