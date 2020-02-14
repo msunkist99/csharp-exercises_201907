@@ -9,8 +9,16 @@ namespace MK_RestaurantMenu
         private double price;
         private string description;
         private string name;
-        private string category;
 
+        // ToDo - make this an enum
+        private string category;
+        private int id = 0;
+        private static int nextMenuId = 0;
+
+        public MenuItem()
+        {
+            id = ++nextMenuId;
+        }
         public double Price
         {
             get
@@ -64,5 +72,12 @@ namespace MK_RestaurantMenu
             }
         }
 
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+        }
     }
 }

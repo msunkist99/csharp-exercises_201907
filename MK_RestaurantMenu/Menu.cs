@@ -11,6 +11,13 @@ namespace MK_RestaurantMenu
         private List<MenuItem> menuItems;
         private bool newMenu;
         private int id;
+        private static int nextMenuId = 0;
+
+        public  Menu()
+        {
+            id = ++nextMenuId;
+            menuItems = new List<MenuItem>();
+        }
 
         public DateTime CreationDate
         {
@@ -33,6 +40,7 @@ namespace MK_RestaurantMenu
             {
                 return menuItems;
             }
+            // this creates the menuItems list when the class is instantiated
             set
             {
                 menuItems = value;
@@ -48,7 +56,7 @@ namespace MK_RestaurantMenu
             set 
             {
                 newMenu = value;
-                if (value = true)
+                if (value == true)
                 {
                     creationDate = DateTime.Now;
                     updateDate = DateTime.Now;
@@ -56,6 +64,14 @@ namespace MK_RestaurantMenu
             }
         }
 
-        public int Id { get; set; }
+        public int Id { get
+            {
+                return id;
+            }
+        }
+
+
+        // ToDo
+        public bool IsNew { get; set; }
     }
 }
