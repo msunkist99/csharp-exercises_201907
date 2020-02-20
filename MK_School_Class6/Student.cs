@@ -82,5 +82,10 @@ namespace MK_School_Class6
             // returns true/false value
             return StudentId == studentObj.StudentId;
         }
+
+        public override int GetHashCode()
+        {
+            return StudentId;
+        }
     }
 }

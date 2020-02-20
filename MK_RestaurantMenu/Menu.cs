@@ -15,7 +15,8 @@ namespace MK_RestaurantMenu
 
         public  Menu()
         {
-            id = ++nextMenuId;
+            id = nextMenuId;
+            nextMenuId++;
             menuItems = new List<MenuItem>();
         }
 

@@ -9,15 +9,20 @@ namespace MK_RestaurantMenu
         private double price;
         private string description;
         private string name;
+        private DateTime creationDate;
 
         // ToDo - make this an enum
-        private string category;
+        private Category categoryName;
         private int id = 0;
         private static int nextMenuId = 0;
 
+
         public MenuItem()
         {
-            id = ++nextMenuId;
+            id = nextMenuId;
+            nextMenuId++;
+
+            creationDate = DateTime.Now;
         }
         public double Price
         {
@@ -36,15 +41,15 @@ namespace MK_RestaurantMenu
             }
         }
 
-        public string Category 
+        public Category CategoryName 
         { 
             get
             {
-                return category;
+                return categoryName;
             }
             set
             {
-                category = value;
+                categoryName = value;
             }
         }
 
@@ -77,6 +82,34 @@ namespace MK_RestaurantMenu
             get
             {
                 return id;
+            }
+        }
+
+        public enum Category
+        {
+            MainCourse,
+            Appetizer,
+            Dessert
+        }
+
+        public DateTime CreationDate
+        {
+            get
+            {
+                return creationDate;
+            }
+        }
+
+        public bool IsNew
+        {
+            get
+            {
+                if (creationDate > DateTime.Today.AddMonths(-3))
+                {
+                    return true;
+                }
+
+                return false;
             }
         }
     }
